@@ -1,0 +1,14 @@
+{
+  "uiViewClassName": "NitroPdf",
+  "supportsRawText": false,
+  "bubblingEventTypes": {},
+  "directEventTypes": {},
+  "validAttributes": {
+    "source": true,
+    "fitPolicy": true,
+    "backgroundColor": true,
+    "onLoadSuccess": true,
+    "onLoadError": true,
+    "hybridRef": true
+  }
+}
