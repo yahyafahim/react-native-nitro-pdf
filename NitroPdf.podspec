@@ -27,5 +27,16 @@ Pod::Spec.new do |s|
 
   s.dependency 'React-jsi'
   s.dependency 'React-callinvoker'
+  # Explicitly depend on RCT-Folly so CocoaPods wires its headers for
+  # transitive JSI/NitroModules builds in use_frameworks projects.
+  s.dependency 'RCT-Folly'
+
+  # Some React Native + use_frameworks setups expose folly headers via
+  # private/public Pods header paths instead of framework headers.
+  # Adding both paths avoids "folly/folly-config.h not found" when NitroPdf
+  # is consumed as a module.
+  s.user_target_xcconfig = {
+    'HEADER_SEARCH_PATHS' => '$(inherited) "${PODS_ROOT}/Headers/Private/RCT-Folly" "${PODS_ROOT}/Headers/Public/RCT-Folly"'
+  }
   install_modules_dependencies(s)
 end
