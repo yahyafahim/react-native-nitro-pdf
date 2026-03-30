@@ -131,7 +131,7 @@ class HybridNitroPdf(val context: ThemedReactContext): HybridNitroPdfSpec() {
     private fun applyBackgroundColor() {
       val color = try {
         _backgroundColor?.let { Color.parseColor(it) } ?: Color.TRANSPARENT
-      } catch {
+      } catch (e: IllegalArgumentException) {
         Color.TRANSPARENT
       }
       mainHandler.post {
